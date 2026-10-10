@@ -11,16 +11,19 @@ export async function analyzeCode(
     );
   }
 
-  const response = await fetch('http://127.0.0.1:8000/analyze', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      code,
-      language,
-    }),
-  });
+  const response = await fetch(
+    'https://embedc-debug-ai.onrender.com/analyze',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        code,
+        language,
+      }),
+    }
+  );
 
   if (!response.ok) {
     throw new Error(`Backend error: ${response.status}`);
@@ -39,7 +42,8 @@ export async function analyzeCode(
     /(?:Improved Corrected Code|Improved Code|Corrected Code)[\s\S]*?```(?:c|cpp|C)?\s*([\s\S]*?)```/i
   );
 
-  const improvedCode = codeMatch?.[1]?.trim() || code;
+  const improvedCode =
+    codeMatch?.[1]?.trim() || code;
 
   // Create analysis issue
   const issue: AnalysisIssue = {
