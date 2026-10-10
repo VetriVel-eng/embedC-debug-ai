@@ -1,0 +1,6 @@
+{
+  "name": "EmbedDebug AI",
+  "description": "An AI-powered Embedded C debugger that detects coding errors, explains problems clearly, and suggests fixes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
